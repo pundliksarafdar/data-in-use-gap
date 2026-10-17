@@ -1,0 +1,6 @@
+[svc] starting server; pid=1
+[svc] server listening; ready to accept requests
+[svc] server running; uptime=3595s
+[svc] server running; uptime=3600s
+ERROR worker crashed: received signal SIGSEGV while handling request
+[svc] generating crash context for diagnostics

@@ -1,0 +1,5 @@
+# Keep LF on everything so the scripts run in Linux / WSL2 regardless of host OS.
+* text=auto eol=lf
+
+# Binary / generated artifacts (not normally committed, but be explicit).
+*.dump binary

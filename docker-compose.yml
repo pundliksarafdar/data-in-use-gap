@@ -1,0 +1,26 @@
+# Environment-injected form of the demo victim.
+#
+# The canary is NOT baked into the image. It is injected at runtime via the
+# environment, which victim.c reads at startup. Values are pulled from the
+# host shell / a .env file so nothing real lives in this file or the repo:
+#
+#   DB_PASSWORD='DB_PASSWORD=Pr0d_c0nn_7f3a9c21' \
+#   DEMO_MARKER='TDX_DEMO_CANARY_v1' \
+#   docker compose up --build
+#
+# These are fake teaching values (see README "Safety scope"); real deployments
+# supply genuine credentials from a secret store and keep them out of git.
+services:
+  victim:
+    build: ./victim
+    image: tdx-demo/victim:latest
+    container_name: payments-api
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 32
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD}
+      DEMO_MARKER: ${DEMO_MARKER}

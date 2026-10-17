@@ -1,0 +1,21 @@
+# ---- generated demo output (never commit; may contain the canary) ----
+dumps/
+reports/
+
+# ---- build artifacts ----
+victim/victim
+*.o
+*.out
+
+# ---- python ----
+__pycache__/
+*.pyc
+
+# ---- runtime logs ----
+# Ignore stray/real logs, but keep the two sample fixtures the agent demo needs.
+*.log
+!logs/payments-api.log
+!logs/payments-api.injected.log
+
+# ---- local env holding injected canary values — never commit real values ----
+.env
